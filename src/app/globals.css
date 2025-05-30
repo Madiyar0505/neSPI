@@ -22,4 +22,12 @@
   border-style: solid;
   border-color: transparent;
   box-shadow: 0 2px 8px 0 #23221c22;
+}
+@keyframes logo-entrance {
+  0% { opacity: 0; transform: scale(0.7) translateY(-20px); }
+  60% { opacity: 1; transform: scale(1.1) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-logo-entrance {
+  animation: logo-entrance 0.8s cubic-bezier(.4,2,.6,1) both;
 } 

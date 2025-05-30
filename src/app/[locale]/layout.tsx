@@ -40,7 +40,7 @@ export default function RootLayout({
                   Email: info@nespi.kz<br />
                   Телефон: +7 (XXX) XXX-XX-XX
                 </p>
-              </div>
+            </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Время работы</h3>
                 <p className="text-gray-300">
