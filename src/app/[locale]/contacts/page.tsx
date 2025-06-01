@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { supabase } from './supabaseClient';
 
 export default function ContactsPage({ params: { locale } }: { params: { locale: string } }) {
   const isKazakh = locale === 'kz';
@@ -12,10 +13,18 @@ export default function ContactsPage({ params: { locale } }: { params: { locale:
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
-    console.log('Form submitted:', formData);
+    // Деректерді Supabase-қа жіберу
+    const { data, error } = await supabase
+      .from('contacts') // Supabase-тағы кесте аты
+      .insert([formData]);
+    if (error) {
+      alert('Қате: ' + error.message);
+    } else {
+      alert('Сәтті жіберілді!');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
